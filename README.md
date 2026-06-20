@@ -38,21 +38,21 @@ Type the number of the option you want and follow the prompts.
 import json
 import os
 
-# tasks need to stay alive even after the program closes, we will use JSON and store them in a JSON file to do just that.
-TASKS_FILE = 'tasks.json'
+    # tasks need to stay alive even after the program closes, we will use JSON and store them in a JSON file to do just that.
+    TASKS_FILE = 'tasks.json'
 
-def load_tasks():
+    def load_tasks():
     if os.path.exists(TASKS_FILE):
         with open(TASKS_FILE, 'r') as f:
             return json.load(f)
     return []
 
-def save_tasks(tasks):
+    def save_tasks(tasks):
     with open(TASKS_FILE, 'w') as f:
         json.dump(tasks, f, indent=2)
 
-# Here we are adding tasks. Each task is a dictionary with an id, a title, and a done flag set to False by default.
-def add_task(tasks, title):
+    # Here we are adding tasks. Each task is a dictionary with an id, a title, and a done flag set to False by default.
+    def add_task(tasks, title):
     task = {
         "id": len(tasks) + 1,
         "title": title,
@@ -62,8 +62,8 @@ def add_task(tasks, title):
     save_tasks(tasks)
     print(f"Task added: {title}")
 
-# Here we are listing a task. It will loop through every task and prints a checkmark if done, a circle if not.
-def list_tasks(tasks):
+    # Here we are listing a task. It will loop through every task and prints a checkmark if done, a circle if not.
+    def list_tasks(tasks):
     if not tasks:
         print("No tasks found.")
         return
@@ -71,8 +71,8 @@ def list_tasks(tasks):
         status = "✔️" if task['done'] else "❌"
         print(f"{task['id']}. {status} {task['title']}")
 
-# Here we mark a task complete. 
-def complete_task(tasks, task_id):
+    # Here we mark a task complete. 
+    def complete_task(tasks, task_id):
     for task in tasks:
         if task['id'] == task_id:
             task['done'] = True
@@ -81,18 +81,18 @@ def complete_task(tasks, task_id):
             return
     print(f"Task with ID {task_id} not found.")
     
-# Here we delete tasks. 
-def delete_task(tasks, task_id):
+    # Here we delete tasks. 
+    def delete_task(tasks, task_id):
     for i, task in enumerate(tasks):
         if task["id"] == task_id:
             removed = tasks.pop(i)
             save_tasks(tasks)
             print(f"Task deleted: {removed['title']}")
             return
-    print(f"Task with ID {task_id} not found.")
+     print(f"Task with ID {task_id} not found.")
     
-# This the main menu, it is the entry point on the users end. It will keep the program running until the user quits.
-def main():
+    # This the main menu, it is the entry point on the users end. It will keep the program running until the user quits.
+    def main():
     tasks = load_tasks()
     while True:
         print("\n--- To-Do List: ---")
@@ -121,6 +121,7 @@ def main():
         else:
             print("Invalid option. Please try again.")
             
-# The while True loop keeps showing the menu. The if __name__ == "__main__" block means this only runs when you execute the file directly.
-if __name__ == "__main__":
+    if __name__ == "__main__":
     main()
+    
+    # The while True loop keeps showing the menu. The if __name__ == "__main__" block means this only runs when you execute the file directly.
