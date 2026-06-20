@@ -1,0 +1,17 @@
+[
+  {
+    "id": 1,
+    "title": "get milk",
+    "done": true
+  },
+  {
+    "id": 2,
+    "title": "get water crate from costco",
+    "done": false
+  },
+  {
+    "id": 3,
+    "title": "go gym",
+    "done": false
+  }
+]
